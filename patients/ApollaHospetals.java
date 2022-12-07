@@ -4,6 +4,7 @@ public class ApollaHospetals extends Hospital {
 		
 		public Patient[] patients;
 		public int index;
+		public Patient newPatient[];
 		
 		public ApollaHospetals(int size)
 		{
@@ -113,10 +114,80 @@ public class ApollaHospetals extends Hospital {
 				}
 	        }
 		}
-
-
-
+		
+		public boolean updatePatientAddressByName(String name,String newPatientAddress)
+		{
+			boolean isUpdated=false;
+			System.out.println("inside updatePatientAddressByName");
+			System.out.println("no of parameter : 2 : 1) param patientName(String) 2) param patientName");
+			for(int i=0; i<patients.length; i++)
+			{
+				if(patients[i].getPatientName().equals(name))
+				{
+					System.out.println("patient name is mached.... proceed with update ");
+					patients[i].setAddress(newPatientAddress);
+					isUpdated=true;
+					
+					
+					
+				}
+			}
+			return isUpdated;
+		}
+		
+		public boolean updatePatientAgeByName(int newAge,String name)
+		{
+			boolean isUpdated=false;
+			System.out.println("update patient age by name");
+			System.out.println("no of parameter : 2 : 1) param age(String) 2) param patientName");
+			for(int i=0; i<patients.length; i++)
+				
+			{
+				if(patients[i].getPatientName().equals(name))
+				{
+					System.out.println("patient name is mached.... proceed with update ");
+					patients[i].setAge(newAge);
+					isUpdated=true;
+					
+				}
+			}
+			return isUpdated;
+		}
+		
+		
+		public boolean deletePatientByname(String patientName)
+		{
+			boolean isDeleted=false;
+			newPatient= new Patient[patients.length-1];
+			for(int i=0,k=0;i<patients.length;i++)
+			{
+				if(!patients[i].getPatientName().equals(patientName))
+				{
+					newPatient[k++]=patients[i];
+					isDeleted=true;
+					
+				}
+			}
+			return isDeleted;
+	    }
+			
+			public void getAllNewPatients()
+			{
+				System.out.println("list of patients are");
+				for(int i=0; i<newPatient.length; i++)
+				{
+					System.out.println(newPatient[i].getAddress()+ " " + newPatient[i].getPatientName()+" "+newPatient[i].getGender()+ " " + newPatient[i].getAge());
+					
+					
+				}
+				
+			}
 }
+
+			
+			
+
+
 
 		
 			
